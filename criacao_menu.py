@@ -26,7 +26,12 @@ def main():
             except ValueError:
               print("Entrada inválida! Por favor digite um número: ")  
         elif escolha == '4':
-            print("Funcionalidade escolhida foi 'Remover tarefa'")
+            visualizar_tarefas()
+            try:
+              indice = int(input("Digite o número da tarefa que você deseja remover: ")) -1
+            except ValueError:
+              print("Entrada inválida! Por favor digite um número: ")
+            remover_tarefa(indice)
         elif escolha == '5':
             print("Saindo do sistema! Até breve!")
             break
@@ -57,3 +62,10 @@ def concluir_tarefa(indice):
     else:
         print("Índice de tarefa inválido!")
     
+#Criando a função de remover a tarefa
+def remover_tarefa(indice):
+    if 0 <= indice <= len(tarefas):
+        descricao = tarefas.pop(indice)["descricao"]
+        print(f"Tarefa '{descricao}' foi removida com sucesso!")
+    else:
+        print("Índice de tarefa inválido!")
